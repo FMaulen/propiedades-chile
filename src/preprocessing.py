@@ -12,7 +12,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
     # Validamos que todos los precios sean sobre 0
     df = df[df['Price_UF'] > 0]
-    df = df[df['Parking'] != 0]
+    #df = df[df['Parking'] != 0]
 
     # Dropeamos columnas innecesarias
     cols_to_drop = ['Price_CLP','Price_USD','id','Ubicacion']
