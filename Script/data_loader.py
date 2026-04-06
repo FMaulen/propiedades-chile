@@ -4,6 +4,10 @@ import os
 
 def cargar_datos():
     # Rutas de los archivos (desde carpeta Script/)
+
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    BASE_ROUTE = os.path.join(BASE_DIR,'..','data','raw')
     archivo1 = os.path.join('..', 'data', 'raw', '2023-03-08 Precios Casas RM.csv')
     archivo2 = os.path.join('..', 'data', 'raw', '2023-07-18 Propiedades Web Scrape.csv')
 
