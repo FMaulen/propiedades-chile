@@ -1,0 +1,19 @@
+REPORTE DE PROCESAMIENTO - PROPIEDADES CHILE
+==================================================
+
+DATOS ORIGINALES:
+  Filas: 7,779
+  Columnas: 12
+
+DATOS PROCESADOS:
+  Filas: 7,268
+  Columnas: 12
+
+RESUMEN DEL PROCESAMIENTO:
+  Filas eliminadas: 511 (6.6%)
+  Filas conservadas: 7,268 (93.4%)
+
+MOTIVOS DE ELIMINACION:
+  - Filas con datos faltantes en columnas criticas
+  - Propiedades con areas fuera de rangos realistas
+  - Propiedades con precios fuera de rangos realistas
