@@ -14,7 +14,7 @@ def optimize_best_model():
     print("=" * 30)
 
     # Cargar datos
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
 
     # Features y target
     numeric_features = ['Built Area', 'Total Area', 'Dorms', 'Baths', 'Parking']
@@ -27,7 +27,7 @@ def optimize_best_model():
     # Pipeline
     preprocessor = ColumnTransformer([
         ('num', StandardScaler(), numeric_features),
-        ('cat', OneHotEncoder(drop='first'), ['Comuna'])
+        ('cat', OneHotEncoder(handle_unknown='ignore'), ['Comuna'])
     ])
 
     pipeline = Pipeline([

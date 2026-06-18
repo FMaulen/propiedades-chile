@@ -11,7 +11,7 @@ import os
 
 def load_data():
     """Cargar datos limpios"""
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
     return df
 
 def prepare_features(df):
@@ -33,7 +33,7 @@ def create_pipeline(numeric_features, categorical_features, model):
     preprocessor = ColumnTransformer(
         transformers=[
             ('num', StandardScaler(), numeric_features),
-            ('cat', OneHotEncoder(drop='first'), categorical_features)
+            ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
         ]
     )
 

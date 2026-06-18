@@ -1,0 +1,18 @@
+# Dockerfile para el dashboard de Streamlit
+# pa visualizar los datos y predicciones
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# requirements del dashboard
+COPY dashboards/requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# copiamos todo
+COPY . .
+
+EXPOSE 8501
+
+CMD ["streamlit", "run", "dashboards/dashboard.py", "--server.port=8501", "--server.address=0.0.0.0"]

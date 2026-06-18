@@ -15,7 +15,7 @@ def clustering_propiedades():
     print("=" * 30)
 
     # Cargar datos
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
 
     # Variables para agrupar
     features = ['Built Area', 'Total Area', 'Dorms', 'Baths', 'Price_UF']
@@ -52,7 +52,7 @@ def modelo_knn():
     print("=" * 15)
 
     # Cargar datos
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
 
     # Features y target
     features = ['Built Area', 'Total Area', 'Dorms', 'Baths', 'Parking']

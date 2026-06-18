@@ -1,0 +1,18 @@
+# Dockerfile para la API de prediccion de precios
+# nada fancy, solo lo necesario pa que corra
+
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# primero copiamos requirements pa aprovechar cache de docker
+COPY api/requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# copiamos todo el proyecto
+COPY . .
+
+EXPOSE 8000
+
+CMD ["python", "api/api_app.py"]

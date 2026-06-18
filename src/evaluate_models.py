@@ -102,7 +102,7 @@ def create_comparison_plot():
 
     plt.tight_layout()
     plt.savefig('../results/plots/model_comparison.png', dpi=300, bbox_inches='tight')
-    plt.show()
+    # plt.show()
 
 if __name__ == "__main__":
     results = evaluate_all_models()

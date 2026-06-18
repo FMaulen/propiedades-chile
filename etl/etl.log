@@ -1,0 +1,18 @@
+[2026-06-12 18:41:16] Inicio del pipeline ETL
+[2026-06-12 18:41:16] CSVs cargados: 17070 filas totales
+[2026-06-12 18:41:17] Valor UF: 40771.41
+[2026-06-12 18:41:17] Datos de comunas cargados: 42 comunas
+[2026-06-12 18:41:17] Limpieza completada: 12954 filas restantes
+[2026-06-12 18:41:17] Join con comunas: 10177 matches, 2777 sin match
+[2026-06-12 18:41:17] Precio CLP calculado con UF=40771.41
+[2026-06-12 18:41:17] Dataset guardado: C:\Users\av-alumno\.gemini\antigravity\scratch\propiedades-chile\data\processed\casas_rm_integrated.csv (12954 filas, 1.61 MB)
+[2026-06-12 18:41:17] Pipeline ETL completado exitosamente
+[2026-06-17 22:06:35] Inicio del pipeline ETL
+[2026-06-17 22:06:35] CSVs cargados: 17070 filas totales
+[2026-06-17 22:06:36] Valor UF: 40784.98
+[2026-06-17 22:06:36] Datos de comunas cargados: 53 comunas
+[2026-06-17 22:06:36] Limpieza completada: 12954 filas restantes
+[2026-06-17 22:06:36] Join con comunas: 12954 matches, 0 sin match
+[2026-06-17 22:06:36] Precio CLP calculado con UF=40784.98
+[2026-06-17 22:06:36] Dataset guardado: C:\Users\fabia\Downloads\antigravity\scratch\propiedades-chile\data\processed\casas_rm_integrated.csv (12954 filas, 1.60 MB)
+[2026-06-17 22:06:36] Pipeline ETL completado exitosamente

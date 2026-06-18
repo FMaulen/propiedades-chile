@@ -1,104 +1,158 @@
 # Predictor de Precios de Casas - Region Metropolitana
 
-Analisis de precios de propiedades en la Region Metropolitana usando machine learning. Este proyecto compara diferentes modelos para predecir precios de casas basandose en sus caracteristicas.
+Proyecto de analisis y prediccion de precios de propiedades en la Region Metropolitana de Santiago usando machine learning.
+
+**Asignatura:** Programacion para la Ciencia de Datos (SCY1101)
+
+**Integrantes:**
+- Felipe Maulen
+- Evan Mardones
+- Estudiante 3
 
 ## Estructura del Proyecto
 
 ```
 ├── data/
-│   ├── raw/                          # Datos originales
-│   └── processed/                    # Datos limpios
+│   ├── raw/                          # Datos originales (CSVs)
+│   ├── processed/                    # Datos integrados y limpios
+│   └── comunas.db                    # Base de datos SQLite de comunas
+├── etl/
+│   ├── init_db.py                    # Crear base de datos de comunas
+│   └── etl_pipeline.py              # Pipeline ETL completo
 ├── notebooks/
-│   └── EDA_Analysis.ipynb           # Analisis exploratorio
+│   ├── EDA_Analysis.ipynb            # Analisis exploratorio
+│   ├── ML_Complete_Analysis.ipynb    # Analisis de ML
+│   └── Presentacion_Final.ipynb      # Presentacion
 ├── src/
-│   ├── train_models.py              # Entrenar modelos
-│   ├── evaluate_models.py           # Evaluar modelos
-│   ├── simple_optimization.py       # Mejorar modelos
-│   ├── unsupervised_models.py       # Clustering y KNN
-│   └── confusion_matrix.py          # Matriz de confusion
-├── models/trained_models/           # Modelos guardados
-├── results/
-│   ├── metrics/                     # Resultados numericos
-│   └── plots/                       # Graficos
-├── environment.yml                  # Entorno virtual
+│   ├── train_models.py               # Entrenar modelos
+│   ├── evaluate_models.py            # Evaluar modelos
+│   ├── simple_optimization.py        # Optimizar modelos
+│   ├── unsupervised_models.py        # Clustering y KNN
+│   └── confusion_matrix.py           # Matriz de confusion
+├── api/
+│   └── api_app.py                    # API REST con FastAPI
+├── dashboards/
+│   └── dashboard.py                  # Dashboard Streamlit
+├── docker/
+│   ├── Dockerfile.api                # Contenedor API
+│   ├── Dockerfile.dashboard          # Contenedor Dashboard
+│   └── docker-compose.yml            # Orquestacion
+├── tests/
+│   ├── test_etl.py                   # Tests del ETL
+│   └── test_api.py                   # Tests de la API
+├── docs/
+│   ├── architecture.md               # Arquitectura del proyecto
+│   └── user_manual.md                # Manual de usuario
+├── repo/
+│   └── colaboracion_git.md           # Evidencia trabajo en equipo
+├── models/trained_models/            # Modelos guardados (.pkl)
+├── results/                          # Resultados y graficos
+├── environment.yml                   # Entorno Conda
+├── requirements.txt                  # Dependencias pip
 └── README.md
 ```
 
-## Como usar este proyecto
+## Requisitos
 
-### Crear entorno virtual con CONDA
+- Python 3.11+
+- pip o conda
+
+## Instalacion rapida
+
 ```bash
-conda env create -f environment.yml
-conda activate propiedades-chile
+# Clonar el repo
+git clone https://github.com/FMaulen/propiedades-chile.git
+cd propiedades-chile
+
+# Instalar dependencias
+pip install -r requirements.txt
 ```
 
-### Ejecutar el pipeline completo
-```bash
-# 1. Limpiar datos
-python Script/MainScript.py
+## Como ejecutar el proyecto
 
-# 2. Entrenar modelos
+### 1. Preparar la base de datos de comunas
+```bash
+python etl/init_db.py
+```
+
+### 2. Ejecutar el pipeline ETL
+```bash
+python etl/etl_pipeline.py
+```
+Esto carga los CSVs, consulta la API de indicadores (UF), limpia los datos y genera el dataset integrado en `data/processed/`.
+
+### 3. Entrenar los modelos
+```bash
 cd src
 python train_models.py
-
-# 3. Evaluar que tan buenos son
 python evaluate_models.py
-
-# 4. Mejorar el mejor modelo
 python simple_optimization.py
-
-# 5. Hacer clustering
 python unsupervised_models.py
-
-# 6. Crear matriz de confusion
 python confusion_matrix.py
+cd ..
 ```
+
+### 4. Levantar la API
+```bash
+python api/api_app.py
+```
+La API queda disponible en http://localhost:8000. Documentacion interactiva en http://localhost:8000/docs
+
+### 5. Levantar el Dashboard
+```bash
+streamlit run dashboards/dashboard.py
+```
+El dashboard queda en http://localhost:8501
+
+### 6. Con Docker (opcional)
+```bash
+cd docker
+docker-compose up --build
+```
+Levanta la API y el Dashboard juntos en contenedores.
+
+## Fuentes de datos del ETL
+
+El pipeline integra 3 fuentes de datos diferentes:
+
+1. **Archivos CSV**: Datos de propiedades obtenidos por web scraping de portales inmobiliarios (2023)
+2. **API REST externa**: Valor actual de la UF desde [mindicador.cl](https://mindicador.cl/api/uf)
+3. **Base de datos SQL**: Datos socioeconomicos de comunas de la RM (SQLite)
 
 ## Modelos implementados
 
-### Modelos supervisados (predicen precios)
-- **Regresion Lineal**: Modelo basico
-- **Random Forest**: Mejor modelo (R2 = 0.688)
-- **Gradient Boosting**: Modelo alternativo
-- **KNN**: Prediccion por vecinos cercanos
+### Supervisados (predicen precios)
+| Modelo | R2 Score | Error Promedio (UF) |
+|--------|----------|---------------------|
+| Regresion Lineal | -1.777 | 3,652 |
+| Random Forest | 0.848 | 1,989 |
+| Gradient Boosting | 0.837 | 2,182 |
+| Random Forest Mejorado | 0.688 | 2,917 |
+| KNN | 0.654 | 3,350 |
 
-### Modelos no supervisados (encuentran patrones)
-- **K-Means**: Agrupa propiedades similares en 4 grupos
-- **Clasificador**: Predice categoria de precio con matriz de confusion
+### No supervisados
+- **K-Means**: Agrupa propiedades en 4 clusters por precio y caracteristicas
+- **Clasificador**: Random Forest para categorias de precio (Economica, Media, Alta, Premium)
 
-## Resultados principales
+## Endpoints de la API
 
-| Modelo | Precision R2 | Error Promedio (UF) | Estado |
-|-------|-------------|---------------------|---------|
-| Regresion Lineal | -1.777 | 3,652 | Fallo |
-| Random Forest | 0.848 | 1,989 | Bueno |
-| Gradient Boosting | 0.837 | 2,182 | Bueno |
-| Random Forest Mejorado | 0.688 | 2,917 | Mejor |
-| KNN | 0.654 | 3,350 | Decente |
+| Metodo | Ruta | Descripcion |
+|--------|------|-------------|
+| GET | `/` | Info del proyecto y autores |
+| GET | `/health` | Estado del sistema |
+| GET | `/indicators` | Valor actual de la UF |
+| GET | `/communes` | Datos de comunas de la RM |
+| POST | `/predict` | Predecir precio de una propiedad |
 
-### Grupos de propiedades encontrados
-- **Grupo 1**: 5,299 propiedades economicas (5,665 UF promedio, 115m2)
-- **Grupo 2**: 1,735 propiedades premium (21,590 UF promedio, 318m2)
-- **Grupo 3**: 3 propiedades ultra-lujo (21,845 UF promedio, 21,816m2)
-- **Grupo 4**: 231 propiedades de alto valor (27,765 UF promedio, 665m2)
+## Tests
 
-## Simulacion de cambios en vivo
-
-Casa ejemplo: 120m2, 3 dormitorios, 2 banos = **3,334 UF**
-
-Efectos de modificaciones:
-- Agregar 20m2: **5,386 UF** (+2,052 UF)
-- Agregar 1 dormitorio: **3,586 UF** (+251 UF)
-- Agregar 1 bano: **5,674 UF** (+2,340 UF)
-- Agregar 1 estacionamiento: **6,214 UF** (+2,879 UF)
+```bash
+pytest tests/ -v
+```
 
 ## Informacion del dataset
 
 - **Fuente**: Web scraping de portales inmobiliarios de la RM
 - **Periodo**: Marzo - Julio 2023
-- **Propiedades finales**: 7,268 (despues de limpiar)
+- **Propiedades**: ~7,268 (despues de limpieza)
 - **Variables**: Precio UF, Area construida, Area total, Dormitorios, Banos, Estacionamientos, Comuna
-
-## Sobre el proyecto
-
-Proyecto de analisis de datos del mercado inmobiliario chileno desarrollado como parte del aprendizaje en ciencia de datos y machine learning. El objetivo es demostrar la aplicacion practica de diferentes algoritmos de prediccion en un contexto real del mercado de propiedades.

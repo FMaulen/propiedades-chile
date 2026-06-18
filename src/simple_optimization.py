@@ -11,7 +11,7 @@ def simple_optimization():
     print("=" * 30)
 
     # Cargar datos
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
 
     # Solo usar features numericas (sin Comuna para evitar problemas)
     features = ['Built Area', 'Total Area', 'Dorms', 'Baths', 'Parking']

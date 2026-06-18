@@ -1,6 +1,9 @@
 {
-  "r2_original": 0.6569464767696789,
-  "r2_optimized": 0.6880100903607369,
-  "mae_optimized": 2916.8134554626017,
-  "mejora": 0.031063613591058026
+  "best_params": {
+    "model__max_depth": null,
+    "model__min_samples_split": 5,
+    "model__n_estimators": 200
+  },
+  "r2_score": 0.7925769011559726,
+  "mae": 1889.2068082438598
 }

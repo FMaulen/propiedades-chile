@@ -22,7 +22,7 @@ def matriz_confusion_precios():
     print("=" * 45)
 
     # Cargar datos
-    df = pd.read_csv('../outputs/datos_procesados/casas_rm_limpio.csv')
+    df = pd.read_csv('../data/processed/casas_rm_integrated.csv')
 
     # Crear categorias
     df = crear_categorias_precio(df)
@@ -61,7 +61,7 @@ def matriz_confusion_precios():
     plt.ylabel('Real')
     plt.tight_layout()
     plt.savefig('../results/plots/confusion_matrix.png', dpi=300)
-    plt.show()
+    # plt.show()
 
     # Reporte detallado
     report = classification_report(y_test, y_pred)
