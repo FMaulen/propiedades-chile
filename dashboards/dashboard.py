@@ -1,5 +1,5 @@
 # dashboard.py - Dashboard principal del proyecto Propiedades Chile
-# Felipe Maulen, Evan Mardones, Estudiante 3
+# Fabian Maulen, Evan Mardones, Joaquin Pastenes
 # SCY1101 - Programacion para la Ciencia de Datos
 
 import streamlit as st
@@ -414,4 +414,4 @@ with tab3:
 # --- Footer ---
 st.markdown("---")
 st.caption("Propiedades Chile v1.0 | SCY1101 - Programación para la Ciencia de Datos | "
-           "Felipe Maulen, Evan Mardones, Estudiante 3")
+           "Fabian Maulen, Evan Mardones, Joaquin Pastenes")

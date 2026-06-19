@@ -1,5 +1,5 @@
 # api_app.py - API principal del proyecto Propiedades Chile
-# Felipe Maulen, Evan Mardones, Estudiante 3
+# Fabian Maulen, Evan Mardones, Joaquin Pastenes
 # Materia: Programacion para la Ciencia de Datos SCY1101
 
 from fastapi import FastAPI, HTTPException
@@ -75,7 +75,7 @@ def root():
     """Info basica del proyecto"""
     return {
         "title": "Prediccion de Precios de Propiedades - Region Metropolitana",
-        "authors": ["Felipe Maulen", "Evan Mardones", "Estudiante 3"],
+        "authors": ["Fabian Maulen", "Evan Mardones", "Joaquin Pastenes"],
         "version": "1.0",
         "materia": "Programacion para la Ciencia de Datos SCY1101",
         "descripcion": "API para consultar datos y predecir precios de casas en Santiago de Chile"

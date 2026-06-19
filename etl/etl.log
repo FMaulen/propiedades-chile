@@ -16,3 +16,12 @@
 [2026-06-17 22:06:36] Precio CLP calculado con UF=40784.98
 [2026-06-17 22:06:36] Dataset guardado: C:\Users\fabia\Downloads\antigravity\scratch\propiedades-chile\data\processed\casas_rm_integrated.csv (12954 filas, 1.60 MB)
 [2026-06-17 22:06:36] Pipeline ETL completado exitosamente
+[2026-06-19 01:36:58] Inicio del pipeline ETL
+[2026-06-19 01:36:58] CSVs cargados: 17070 filas totales
+[2026-06-19 01:36:59] Valor UF: 40790.42
+[2026-06-19 01:36:59] Datos de comunas cargados: 53 comunas
+[2026-06-19 01:36:59] Limpieza completada: 12954 filas restantes
+[2026-06-19 01:36:59] Join con comunas: 12954 matches, 0 sin match
+[2026-06-19 01:36:59] Precio CLP calculado con UF=40790.42
+[2026-06-19 01:36:59] Dataset guardado: C:\Users\fabia\Downloads\antigravity\scratch\propiedades-chile\data\processed\casas_rm_integrated.csv (12954 filas, 1.60 MB)
+[2026-06-19 01:36:59] Pipeline ETL completado exitosamente

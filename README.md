@@ -7,7 +7,7 @@ Proyecto de analisis y prediccion de precios de propiedades en la Region Metropo
 **Integrantes:**
 - Fabian Maulen
 - Evan Mardones
-- Joaquin
+- Joaquin Pastenes
 
 ## Estructura del Proyecto
 

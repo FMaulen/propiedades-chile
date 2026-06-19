@@ -86,15 +86,15 @@ git pull
 
 | Integrante | Rol Principal | Área |
 |---|---|---|
-| Felipe Maulen | ETL y Datos | Pipeline de datos, scraping, limpieza |
+| Fabian Maulen | ETL y Datos | Pipeline de datos, scraping, limpieza |
 | Evan Mardones | Modelos ML y API | Entrenamiento de modelos, endpoints API |
-| Estudiante 3 | Dashboard y Docker | Visualización, contenedores, deploy |
+| Joaquin Pastenes | Dashboard y Docker | Visualización, contenedores, deploy |
 
 ## Tabla de Contribuciones
 
 Contribución aproximada de cada integrante por área:
 
-| Área | Felipe Maulen | Evan Mardones | Estudiante 3 |
+| Área | Fabian Maulen | Evan Mardones | Joaquin Pastenes |
 |---|---|---|---|
 | ETL / Datos | 70% | 15% | 15% |
 | Modelos ML | 15% | 70% | 15% |
