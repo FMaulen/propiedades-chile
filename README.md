@@ -5,9 +5,9 @@ Proyecto de analisis y prediccion de precios de propiedades en la Region Metropo
 **Asignatura:** Programacion para la Ciencia de Datos (SCY1101)
 
 **Integrantes:**
-- Felipe Maulen
+- Fabian Maulen
 - Evan Mardones
-- Estudiante 3
+- Joaquin
 
 ## Estructura del Proyecto
 
